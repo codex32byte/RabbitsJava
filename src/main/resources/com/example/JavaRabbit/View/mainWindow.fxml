@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.JavaRabbit.controller.mainController" onKeyPressed="#keyPressed">
+
+
+    <!-- Menu Bar -->
+    <top>
+        <MenuBar style="-fx-background-color: #007BFF; -fx-text-fill: #FFFFFF;">
+            <Menu text="File">
+                <MenuItem text="Start" onAction="#startAction"/>
+                <MenuItem text="Stop" onAction="#stopAction"/>
+                <MenuItem text="Save" onAction="#saveObjects"/>
+                <MenuItem text="Load" onAction="#loadObjects"/>
+                <MenuItem text="Exit"/>
+            </Menu>
+            <Menu text="View">
+                <MenuItem text="Show Simulation Time" onAction="#showTimeButtonClick"/>
+                <MenuItem text="Hide Simulation Time" onAction="#hideTimeButtonClick"/>
+                <MenuItem text="Show Result Window" onAction="#resultWindowCheckBoxClick"/>
+                <MenuItem text="Console" onAction="#openConsole"/>
+                <MenuItem fx:id="connectedListMenuItem" text="Connected List" />
+                <MenuItem text="Save to Database" onAction="#handleSaveToDatabase"/>
+                <MenuItem text="Load from Database" onAction="#handleLoadFromDatabase"/>
+            </Menu>
+
+        </MenuBar>
+    </top>
+
+    <left>
+        <!-- Pane for Rabbits -->
+        <Pane fx:id="rabbitsPane" prefWidth="290" prefHeight="100"/>
+    </left>
+
+    <!-- SplitPane -->
+
+
+    <right>
+        <SplitPane>
+
+            <!-- Control Panel -->
+            <BorderPane fx:id="controlPanel" maxWidth="300" maxHeight="900" style="-fx-background-color: #6cBDE9;">
+
+                <top>
+                    <VBox spacing="10" alignment="center">
+                        <HBox spacing="10">
+                            <Button fx:id="startButton" text="Start" onAction="#startAction"/>
+                            <Button fx:id="stopButton" text="Stop" onAction="#stopAction"/>
+                        </HBox>
+                        <Label fx:id="timeLabel" text="" visible="true" style="-fx-text-fill: red;"/>
+                        <HBox>
+                            <RadioButton fx:id="showTimeButton" text="Show simulation time" onAction="#showTimeButtonClick"/>
+                            <RadioButton fx:id="hideTimeButton" text="Hide simulation time" onAction="#hideTimeButtonClick"/>
+                        </HBox>
+                        <!-- Result Window Check Box -->
+                        <CheckBox fx:id="resultWindowCheckBox" text="Show Result Window" onAction="#resultWindowCheckBoxClick"/>
+
+                        <VBox spacing="10" alignment="CENTER">
+                            <!-- Other existing elements -->
+                            <Button fx:id="showObjectsButton" text="Show Current Objects" onAction="#showCurrentObjects"/>
+                        </VBox>
+
+                    </VBox>
+                </top>
+                <center>
+                    <VBox spacing="10" alignment="CENTER">
+                        <Label text="Probability of creating Common Rabbits" style="-fx-font-size: 15px;"/>
+                        <Slider fx:id="P1Slider" prefWidth="200" min="10" max="100" value="10"/>
+                        <Label fx:id="P1ValueLabel" />
+                        <Label text="Probability of creating Albino Rabbits" style="-fx-font-size: 15px;"/>
+                        <Slider fx:id="P2PercentageSlider" prefWidth="200" min="10" max="100" value="10"/>
+                        <Label fx:id="P2ValueLabel" />
+                        <HBox spacing="10">
+                            <Label text="Creating period" style="-fx-font-size: 17px;" />
+                            <TextField fx:id="N1TextField" prefWidth="100" promptText="Enter N1 (10-100)" />
+                        </HBox>
+                        <!-- Newly added text fields for specifying lifetimes -->
+                        <HBox spacing="10">
+                            <Label text="Lifetime of Common Rabbits" style="-fx-font-size: 14px; " />
+                            <TextField fx:id="commonLifetimeTextField" prefWidth="100" promptText="Enter lifetime" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label text="Lifetime of Albino Rabbits    " style="-fx-font-size: 14px; " />
+                            <TextField fx:id="albinoLifetimeTextField" prefWidth="100" promptText="Enter lifetime" />
+                        </HBox>
+                        <VBox spacing="10" alignment="CENTER">
+
+                            <Label text="Common Rabbit AI" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <HBox spacing="10">
+                                <Button fx:id="stopCommonAIButton" text="Sleep" onAction="#stopCommonAI">
+
+                                </Button>
+                                <Button fx:id="resumeCommonAIButton" text="Wake" onAction="#resumeCommonAI">
+                                    <!-- Add an image of a common rabbit to the button -->
+
+                                </Button>
+                                <Label text="Priority:" style="-fx-font-size: 15px; "/>
+                                <ComboBox fx:id="commonPriorityDropdown" prefWidth="100">
+                                    <!-- Populate dropdown list with priority options -->
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="1" fx:id="Per1"/> <!-- Minimum priority -->
+                                            <String fx:value="5" fx:id="Per5"/> <!-- Normal priority -->
+                                            <String fx:value="10" fx:id="Per10"/> <!-- Maximum priority -->
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                            </HBox>
+
+                            <Label text="Albino Rabbit AI" style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+                            <HBox spacing="10">
+                                <Button fx:id="stopAlbinoAIButton" text="Sleep" onAction="#stopAlbinoAI">
+
+                                </Button>
+                                <Button fx:id="resumeAlbinoAIButton" text="Wake" onAction="#resumeAlbinoAI">
+
+                                </Button>
+                                <Label text="Priority:" style="-fx-font-size: 16px; "/>
+                                <ComboBox fx:id="albinoPriorityDropdown" prefWidth="100">
+                                    <!-- Populate dropdown list with priority options -->
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="1" fx:id="P1"/> <!-- Minimum priority -->
+                                            <String fx:value="5" fx:id="P5"/> <!-- Normal priority -->
+                                            <String fx:value="10" fx:id="P10"/> <!-- Maximum priority -->
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                            </HBox>
+                        </VBox>
+
+
+                        <!-- End of newly added text fields -->
+                        <Button fx:id="OkButton" onAction="#OkButtonClick" text="OK" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 5px 20px; -fx-margin-top: 10px;" />
+                    </VBox>
+
+
+                </center>
+            </BorderPane>
+        </SplitPane>
+    </right>
+
+    <!-- Statistic Label -->
+    <bottom>
+        <HBox spacing="10">
+            <Label fx:id="statisticLabel" text="" visible="true"/>
+        </HBox>
+    </bottom>
+
+
+
+
+</BorderPane>
