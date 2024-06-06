@@ -1,5 +1,5 @@
 # RabbitsJava
-#This An UNI Project was asked to create a habitat of two types of rabbits ( Albino and Common ) , if you want seperated file of requirements for each lab DM on vk @0c0dex User #are able to : 
+# This An UNI Project was asked to create a habitat of two types of rabbits ( Albino and Common ) , if you want seperated file of requirements for each lab DM on vk @0c0dex User #are able to : 
 # 1- Control the creating period and the amount of borning rabbits per seconds.
 # 2- Using database to save and import saved rabbits from table .
 # 3- saving configration of simulating into txt file.
