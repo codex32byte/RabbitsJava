@@ -1,0 +1,7 @@
+P1=40
+N1=1
+P2Percentage=54
+CommonLifetime=20
+AlbinoLifetime=16
+CommonPriority=1
+AlbinoPriority=1

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<DialogPane fx:id="statWindow" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #008000;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.JavaRabbit.controller.ResultWindowController">
+    <content>
+        <AnchorPane prefHeight="400.0" prefWidth="400.0">
+            <children>
+                <TextArea fx:id="resultTextArea" editable="false" layoutX="73.0" layoutY="79.0" prefHeight="165.0" prefWidth="253.0" style="-fx-background-color: #FFFFFF;-fx-control-inner-background: #008000; -fx-font-alignment: center">
+                    <font>
+                        <Font name="Bell MT Bold" size="25.0"/>
+                    </font>
+                </TextArea>
+                <Button fx:id="CancelButton" layoutX="55.0" layoutY="306.0" mnemonicParsing="false" onAction="#CancelButtonClick" prefHeight="35.0" prefWidth="90.0" text="Cancel" textFill="#f71616">
+                    <font>
+                        <Font name="Bell MT Bold" size="14.0" />
+                    </font>
+                    <effect>
+                        <Blend mode="DARKEN" />
+                    </effect>
+                </Button>
+                <Button fx:id="OKButton" layoutX="254.0" layoutY="306.0" mnemonicParsing="false" onAction="#OKButtonClick" prefHeight="35.0" prefWidth="90.0" text="OK" textFill="#0edf1c">
+                    <font>
+                        <Font name="Bell MT Bold" size="14.0" />
+                    </font>
+                    <effect>
+                        <Blend mode="DARKEN" />
+                    </effect>
+                </Button>
+                <Label alignment="CENTER" layoutX="145.0" layoutY="41.0" prefHeight="24.0" prefWidth="109.0" text="Statistics" textFill="#FFFF00">
+                    <font>
+                        <Font name="Bell MT Bold" size="25.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </content>
+</DialogPane>
